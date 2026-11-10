@@ -9,6 +9,9 @@ using RaceDay.models;
 
 
 var builder = WebApplication.CreateBuilder(args);
+Console.WriteLine("ACTIVE DATABASE CONNECTION:");
+Console.WriteLine(builder.Configuration.GetConnectionString("RaceDayConnection"));
+Console.WriteLine("ENVIRONMENT: " + builder.Environment.EnvironmentName);
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -78,7 +81,6 @@ builder.Services.AddAuthentication(options =>
                 builder.Configuration["Jwt:Key"]!))
     };
 });
-
 var app = builder.Build();
 
 
